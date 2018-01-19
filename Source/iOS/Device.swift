@@ -58,6 +58,9 @@ open class Device: NSObject {
             case "iPhone8,4":                                return .iPhoneSE
             case "iPhone9,1", "iPhone9,3":                   return .iPhone7
             case "iPhone9,2", "iPhone9,4":                   return .iPhone7Plus
+            case "iPhone10,1", "iPhone10,4":                 return .iPhone8
+            case "iPhone10,2", "iPhone10,5":                 return .iPhone8Plus
+            case "iPhone10,3", "iPhone10,6":                 return .iPhoneX
 
             /*** iPad ***/
             case "iPad1,1":                                  return Version.iPad1
@@ -178,6 +181,20 @@ open class Device: NSObject {
     
     static open func isSimulator() -> Bool {
         return type() == .simulator
+    }
+    
+    static open func isPlusSizePhone() -> Bool {
+        var returnValue = (Device.version() == .iPhone6Plus)
+        if returnValue == false {
+            returnValue = (Device.version() == .iPhone6SPlus)
+        }
+        if returnValue == false {
+            returnValue = (Device.version() == .iPhone7Plus)
+        }
+        if returnValue == false {
+            returnValue = (Device.version() == .iPhone8Plus)
+        }
+        return returnValue
     }
     
 }
