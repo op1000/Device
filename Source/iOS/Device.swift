@@ -39,6 +39,9 @@ open class Device: NSObject {
         if UIScreen.main.bounds.size.equalTo(CGSize(width: 1024, height: 1366))  {
             return .iPadPro12_9Inch // 12.9-inch iPad Pro
         }
+        if UIScreen.main.bounds.size.equalTo(CGSize(width: 375, height: 812))  {
+            return .iPhoneX // iPhoneX
+        }
         
         return .unknown
     }
@@ -147,6 +150,10 @@ open class Device: NSObject {
     static open func type() -> Type {
         return getType(code: getVersionCode())
     }
+    
+    static open func typeString() -> NSString {
+        return getType(code: getVersionCode()).rawValue as NSString
+    }
 
     @available(*, deprecated, message: "use == operator instead")
     static open func isEqualToScreenSize(_ size: Size) -> Bool {
@@ -181,6 +188,11 @@ open class Device: NSObject {
     
     static open func isSimulator() -> Bool {
         return type() == .simulator
+    }
+    
+    static open func isPhoneX() -> Bool {
+        let returnValue = (Device.version() == .iPhoneX)
+        return returnValue
     }
     
     static open func isPlusSizePhone() -> Bool {
