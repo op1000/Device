@@ -21,28 +21,28 @@ open class Device: NSObject {
     
     static fileprivate func getVersionInSimulator() -> Version {
         
-        if UIScreen.main.bounds.size.equalTo(CGSize(width: 320, height: 568))  {
+        if UIScreen.main.bounds.size.equalTo(CGSize(width: 320, height: 568)) || UIScreen.main.bounds.size.equalTo(CGSize(width: 568, height: 320)) {
             return .iPhoneSE // iPhone 5, 5C, 5S, iPod Touch 5g
         }
-        if UIScreen.main.bounds.size.equalTo(CGSize(width: 375, height: 667))  {
+        if UIScreen.main.bounds.size.equalTo(CGSize(width: 375, height: 667)) || UIScreen.main.bounds.size.equalTo(CGSize(width: 667, height: 375)) {
             return .iPhone7 // iPhone 6, iPhone 6s, iPhone 7
         }
-        if UIScreen.main.bounds.size.equalTo(CGSize(width: 414, height: 736))  {
+        if UIScreen.main.bounds.size.equalTo(CGSize(width: 414, height: 736)) || UIScreen.main.bounds.size.equalTo(CGSize(width: 736, height: 414)) {
             return .iPhone7Plus // iPhone 6 Plus, iPhone 6s Plus, iPhone 7 Plus
         }
-        if UIScreen.main.bounds.size.equalTo(CGSize(width: 768, height: 1024))  {
+        if UIScreen.main.bounds.size.equalTo(CGSize(width: 768, height: 1024)) || UIScreen.main.bounds.size.equalTo(CGSize(width: 1024, height: 768)) {
             return .iPadMini // iPad Mini 2, iPad Mini 3, iPad Mini 4, iPad 3, iPad 4, iPad Air, iPad Air 2, 9.7-inch iPad Pro
         }
-        if UIScreen.main.bounds.size.equalTo(CGSize(width: 834, height: 1112))  {
+        if UIScreen.main.bounds.size.equalTo(CGSize(width: 834, height: 1112)) || UIScreen.main.bounds.size.equalTo(CGSize(width: 1112, height: 834)) {
             return .iPadPro9_7Inch
         }
-        if UIScreen.main.bounds.size.equalTo(CGSize(width: 1024, height: 1366))  {
+        if UIScreen.main.bounds.size.equalTo(CGSize(width: 1024, height: 1366)) || UIScreen.main.bounds.size.equalTo(CGSize(width: 1366, height: 1024)) {
             return .iPadPro12_9Inch // 12.9-inch iPad Pro
         }
-        if UIScreen.main.bounds.size.equalTo(CGSize(width: 375, height: 812))  {
+        if UIScreen.main.bounds.size.equalTo(CGSize(width: 375, height: 812)) || UIScreen.main.bounds.size.equalTo(CGSize(width: 812, height: 375)) {
             return .iPhoneXS // iPhoneXS or iPhoneX
         }
-        if UIScreen.main.bounds.size.equalTo(CGSize(width: 414, height: 896))  {
+        if UIScreen.main.bounds.size.equalTo(CGSize(width: 414, height: 896)) || UIScreen.main.bounds.size.equalTo(CGSize(width: 896, height: 414)) {
             return .iPhoneXSMax // iPhoneXR or iPhoneXSMax
         }
         
@@ -205,10 +205,10 @@ open class Device: NSObject {
         return returnValue
     }
     
-    static public func isPlusSizePhone() -> Bool {
+    static public func isSplitablePhone() -> Bool {
         let version: Version = Device.version()
         var returnValue = false
-        if version == .iPhone6Plus || version == .iPhone6SPlus || version == .iPhone7Plus || version == .iPhone8Plus {
+        if version == .iPhone6Plus || version == .iPhone6SPlus || version == .iPhone7Plus || version == .iPhone8Plus /*|| version == .iPhoneXR || version == .iPhoneXSMax*/ {
             returnValue = true
         }
         return returnValue
