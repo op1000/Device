@@ -214,4 +214,13 @@ open class Device: NSObject {
         return returnValue
     }
     
+    static public func isSeSizePhone() -> Bool {
+        let deviceVersion: Version = Device.version()
+        var returnValue = false
+        if deviceVersion == .iPhoneSE || deviceVersion == .iPhone5S || deviceVersion == .iPhone5C || deviceVersion == .iPhone5 || deviceVersion == .iPhone4S || deviceVersion == .iPhone4 {
+            returnValue = true;
+        }
+        return returnValue
+    }
+    
 }
