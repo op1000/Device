@@ -111,7 +111,12 @@ open class Device: NSObject {
         } else if versionCode.contains("iPod") {
             return .iPod
         } else if versionCode == "i386" || versionCode == "x86_64" {
-            return .simulator
+            let deviceVersion: Version = getVersionInSimulator()
+            if deviceVersion == .iPhoneSE || deviceVersion == .iPhone7 || deviceVersion == .iPhone7Plus || deviceVersion == .iPhoneXS || deviceVersion == .iPhoneXSMax {
+                return .iPhone
+            } else {
+                return .iPad
+            }
         } else {
             return .unknown
         }
