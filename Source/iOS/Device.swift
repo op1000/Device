@@ -8,7 +8,7 @@
 
 import UIKit
 
-@objc
+@objcMembers
 open class Device: NSObject {
     static fileprivate func getVersionCode() -> NSString {
         var systemInfo = utsname()
