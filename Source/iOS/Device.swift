@@ -9,7 +9,7 @@
 import UIKit
 
 @objcMembers
-open class Device: NSObject {
+public class Device: NSObject {
     static fileprivate func getVersionCode() -> NSString {
         var systemInfo = utsname()
         uname(&systemInfo)
@@ -122,7 +122,7 @@ open class Device: NSObject {
         }
     }
 
-    static public func version() -> Version {
+    static public func theVersion() -> Version {
         return getVersion(code: getVersionCode())
     }
     
@@ -202,7 +202,7 @@ open class Device: NSObject {
     }
     
     static public func isNotchDesignPhone() -> Bool {
-        let version: Version = Device.version()
+        let version: Version = Device.theVersion()
         var returnValue = false
         if version == .iPhoneX || version == .iPhoneXS || version == .iPhoneXR || version == .iPhoneXSMax {
             returnValue = true
@@ -211,7 +211,7 @@ open class Device: NSObject {
     }
     
     static public func isSplitablePhone() -> Bool {
-        let version: Version = Device.version()
+        let version: Version = Device.theVersion()
         var returnValue = false
         if version == .iPhone6Plus || version == .iPhone6SPlus || version == .iPhone7Plus || version == .iPhone8Plus /*|| version == .iPhoneXR || version == .iPhoneXSMax*/ {
             returnValue = true
@@ -220,7 +220,7 @@ open class Device: NSObject {
     }
     
     static public func isSeSizePhone() -> Bool {
-        let deviceVersion: Version = Device.version()
+        let deviceVersion: Version = Device.theVersion()
         var returnValue = false
         if deviceVersion == .iPhoneSE || deviceVersion == .iPhone5S || deviceVersion == .iPhone5C || deviceVersion == .iPhone5 || deviceVersion == .iPhone4S || deviceVersion == .iPhone4 {
             returnValue = true;

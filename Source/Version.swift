@@ -6,6 +6,8 @@
 //  Copyright © 2015 Ekhoo. All rights reserved.
 //
 
+import Foundation
+
 public enum Version: NSString {
     /*** iPhone ***/
     case iPhone4

@@ -15,7 +15,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         /*** Display the device version ***/
-        switch Device.version() {
+        switch Device.theVersion() {
             /*** iPhone ***/
             case .iPhone4:       print("It's an iPhone 4")
             case .iPhone4S:      print("It's an iPhone 4S")
@@ -43,7 +43,7 @@ class ViewController: UIViewController {
             case .iPadMini3:       print("It's an iPad Mini 3")
             case .iPadMini4:       print("It's an iPad Mini 4")
             case .iPadPro9_7Inch:  print("It's an iPad Pro 9.7 Inch")
-            case .iPadPro10_5Inch: print("It's an iPad Pro 10.5 Inch")
+            //case .iPadPro10_5Inch: print("It's an iPad Pro 10.5 Inch")
             case .iPadPro12_9Inch: print("It's an iPad Pro 12.9 Inch")
             
             /*** iPod ***/
@@ -67,10 +67,10 @@ class ViewController: UIViewController {
             case .screen4Inch:    print("It's a 4 inch screen")
             case .screen4_7Inch:  print("It's a 4.7 inch screen")
             case .screen5_5Inch:  print("It's a 5.5 inch screen")
-            case .screen5_8Inch:  print("It's a 5.8 inch screen")
+            //case .screen5_8Inch:  print("It's a 5.8 inch screen")
             case .screen7_9Inch:  print("It's a 7.9 inch screen")
             case .screen9_7Inch:  print("It's a 9.7 inch screen")
-            case .screen10_5Inch: print("It's a 10.5 inch screen")
+            //case .screen10_5Inch: print("It's a 10.5 inch screen")
             case .screen12_9Inch: print("It's a 12.9 inch screen")
             default:              print("Unknown size")
         }

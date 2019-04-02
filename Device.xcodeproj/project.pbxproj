@@ -78,6 +78,8 @@
 		001C44691C3C08C000F6599D /* Device.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Device.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		001C446C1C3C08C000F6599D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		001C446D1C3C08C000F6599D /* Device.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Device.h; sourceTree = "<group>"; };
+		0B7845A022538E10009913A6 /* .swift-version */ = {isa = PBXFileReference; lastKnownFileType = text; path = ".swift-version"; sourceTree = SOURCE_ROOT; };
+		0B7845A122538E18009913A6 /* Device.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = Device.podspec; sourceTree = SOURCE_ROOT; };
 		BE11EEE71BE3FC0300816835 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE11EEFC1BE3FD9200816835 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Example/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		BE11EEFD1BE3FD9200816835 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Example/Assets.xcassets; sourceTree = SOURCE_ROOT; };
@@ -144,6 +146,15 @@
 			path = Device;
 			sourceTree = "<group>";
 		};
+		0B78459F22538DFA009913A6 /* PodSpec */ = {
+			isa = PBXGroup;
+			children = (
+				0B7845A022538E10009913A6 /* .swift-version */,
+				0B7845A122538E18009913A6 /* Device.podspec */,
+			);
+			path = PodSpec;
+			sourceTree = "<group>";
+		};
 		BE11EEDE1BE3FC0300816835 = {
 			isa = PBXGroup;
 			children = (
@@ -152,6 +163,7 @@
 				E2C023C01D6338BB0033AD25 /* Example macOS */,
 				001C446A1C3C08C000F6599D /* Device */,
 				E2C023AB1D6331010033AD25 /* Device macOS */,
+				0B78459F22538DFA009913A6 /* PodSpec */,
 				BE11EEE81BE3FC0300816835 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -338,7 +350,7 @@
 				TargetAttributes = {
 					001C44681C3C08C000F6599D = {
 						CreatedOnToolsVersion = 6.4;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 1020;
 					};
 					BE11EEE61BE3FC0300816835 = {
 						CreatedOnToolsVersion = 7.1;
@@ -514,7 +526,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -535,7 +547,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -596,6 +608,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Ekhoo.Device;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -646,6 +659,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Ekhoo.Device;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 5.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -666,7 +680,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -686,7 +700,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited).Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -711,7 +725,7 @@
 				PRODUCT_NAME = Device;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -737,7 +751,7 @@
 				PRODUCT_NAME = Device;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -757,7 +771,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "Ekhoo.Device.Example-macOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -775,7 +789,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "Ekhoo.Device.Example-macOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
