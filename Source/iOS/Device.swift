@@ -21,6 +21,9 @@ public class Device: NSObject {
     
     static fileprivate func getVersionInSimulator() -> Version {
         
+        if UIScreen.main.bounds.size.equalTo(CGSize(width: 320, height: 480)) || UIScreen.main.bounds.size.equalTo(CGSize(width: 480, height: 320)) {
+            return .iPhone4 // iPhone 5, 5C, 5S, iPod Touch 5g
+        }
         if UIScreen.main.bounds.size.equalTo(CGSize(width: 320, height: 568)) || UIScreen.main.bounds.size.equalTo(CGSize(width: 568, height: 320)) {
             return .iPhoneSE // iPhone 5, 5C, 5S, iPod Touch 5g
         }
@@ -122,15 +125,15 @@ public class Device: NSObject {
         }
     }
 
-    static public func theVersion() -> Version {
+    public static func version() -> Version {
         return getVersion(code: getVersionCode())
     }
     
-    static public func versionString() -> NSString {
+    public static func versionString() -> NSString {
         return getVersion(code: getVersionCode()).rawValue
     }
     
-    static public func size() -> Size {
+    public static func size() -> Size {
         let w: Double = Double(UIScreen.main.bounds.width)
         let h: Double = Double(UIScreen.main.bounds.height)
         let screenHeight: Double = max(w, h)
@@ -158,51 +161,51 @@ public class Device: NSObject {
         }
     }
     
-    static public func type() -> Type {
+    public static func type() -> Type {
         return getType(code: getVersionCode())
     }
     
-    static public func typeString() -> NSString {
+    public static func typeString() -> NSString {
         return getType(code: getVersionCode()).rawValue as NSString
     }
 
     @available(*, deprecated, message: "use == operator instead")
-    static public func isEqualToScreenSize(_ size: Size) -> Bool {
+    public static func isEqualToScreenSize(_ size: Size) -> Bool {
         return size == self.size() ? true : false;
     }
 
     @available(*, deprecated, message: "use > operator instead")
-    static public func isLargerThanScreenSize(_ size: Size) -> Bool {
+    public static func isLargerThanScreenSize(_ size: Size) -> Bool {
         return size.rawValue < self.size().rawValue ? true : false;
     }
 
     @available(*, deprecated, message: "use < operator instead")
-    static public func isSmallerThanScreenSize(_ size: Size) -> Bool {
+    public static func isSmallerThanScreenSize(_ size: Size) -> Bool {
         return size.rawValue > self.size().rawValue ? true : false;
     }
     
-    static public func isRetina() -> Bool {
+    public static func isRetina() -> Bool {
         return UIScreen.main.scale > 1.0
     }
 
-    static public func isPad() -> Bool {
+    public static func isPad() -> Bool {
         return type() == .iPad
     }
     
-    static public func isPhone() -> Bool {
+    public static func isPhone() -> Bool {
         return type() == .iPhone
     }
     
-    static public func isPod() -> Bool {
+    public static func isPod() -> Bool {
         return type() == .iPod
     }
     
-    static public func isSimulator() -> Bool {
+    public static func isSimulator() -> Bool {
         return type() == .simulator
     }
     
-    static public func isNotchDesignPhone() -> Bool {
-        let version: Version = Device.theVersion()
+    public static func isNotchDesignPhone() -> Bool {
+        let version: Version = Device.version()
         var returnValue = false
         if version == .iPhoneX || version == .iPhoneXS || version == .iPhoneXR || version == .iPhoneXSMax {
             returnValue = true
@@ -210,17 +213,17 @@ public class Device: NSObject {
         return returnValue
     }
     
-    static public func isSplitablePhone() -> Bool {
-        let version: Version = Device.theVersion()
+    public static func isSplitablePhone() -> Bool {
+        let version: Version = Device.version()
         var returnValue = false
-        if version == .iPhone6Plus || version == .iPhone6SPlus || version == .iPhone7Plus || version == .iPhone8Plus /*|| version == .iPhoneXR || version == .iPhoneXSMax*/ {
+        if version == .iPhone6Plus || version == .iPhone6SPlus || version == .iPhone7Plus || version == .iPhone8Plus/* || version == .iPhoneXR || version == .iPhoneXSMax*/ {
             returnValue = true
         }
         return returnValue
     }
     
-    static public func isSeSizePhone() -> Bool {
-        let deviceVersion: Version = Device.theVersion()
+    public static func isSeSizePhone() -> Bool {
+        let deviceVersion: Version = Device.version()
         var returnValue = false
         if deviceVersion == .iPhoneSE || deviceVersion == .iPhone5S || deviceVersion == .iPhone5C || deviceVersion == .iPhone5 || deviceVersion == .iPhone4S || deviceVersion == .iPhone4 {
             returnValue = true;
