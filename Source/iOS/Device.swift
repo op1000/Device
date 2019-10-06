@@ -43,10 +43,10 @@ public class Device: NSObject {
             return .iPadPro12_9Inch // 12.9-inch iPad Pro
         }
         if UIScreen.main.bounds.size.equalTo(CGSize(width: 375, height: 812)) || UIScreen.main.bounds.size.equalTo(CGSize(width: 812, height: 375)) {
-            return .iPhoneXS // iPhoneXS or iPhoneX
+            return .iPhone11Pro // iPhoneXS or iPhoneX or iPhone11Pro
         }
         if UIScreen.main.bounds.size.equalTo(CGSize(width: 414, height: 896)) || UIScreen.main.bounds.size.equalTo(CGSize(width: 896, height: 414)) {
-            return .iPhoneXSMax // iPhoneXR or iPhoneXSMax
+            return .iPhone11ProMax // iPhoneXR or iPhoneXSMax or iPhone11 or iPhone11ProMax
         }
         
         return .unknown
@@ -73,6 +73,9 @@ public class Device: NSObject {
             case "iPhone11,2":                               return .iPhoneXS
             case "iPhone11,8":                               return .iPhoneXR
             case "iPhone11,4", "iPhone11,6":                 return .iPhoneXSMax
+            case "iPhone12,1":                               return .iPhone11
+            case "iPhone12,3":                               return .iPhone11Pro
+            case "iPhone12,5":                               return .iPhone11ProMax
 
             /*** iPad ***/
             case "iPad1,1":                                  return Version.iPad1
@@ -115,7 +118,12 @@ public class Device: NSObject {
             return .iPod
         } else if versionCode == "i386" || versionCode == "x86_64" {
             let deviceVersion: Version = getVersionInSimulator()
-            if deviceVersion == .iPhoneSE || deviceVersion == .iPhone7 || deviceVersion == .iPhone7Plus || deviceVersion == .iPhoneXS || deviceVersion == .iPhoneXSMax {
+            if deviceVersion == .iPhoneSE ||
+                deviceVersion == .iPhone7 ||
+                deviceVersion == .iPhone7Plus ||
+                deviceVersion == .iPhone11Pro ||
+                deviceVersion == .iPhone11ProMax
+            {
                 return .iPhone
             } else {
                 return .iPad
@@ -147,6 +155,20 @@ public class Device: NSObject {
                 return UIScreen.main.scale == 3.0 ? .screen5_5Inch : .screen4_7Inch
             case 736:
                 return .screen5_5Inch
+            case 812:
+                switch getVersion(code: getVersionCode()) {
+                case .iPhoneX, .iPhone11Pro:
+                        return .screen5_8Inch
+                    default:
+                        return .screen6_5Inch
+                }
+            case 896:
+                switch getVersion(code: getVersionCode()) {
+                    case .iPhoneXR,.iPhone11:
+                        return .screen6_1Inch
+                    default:
+                        return .screen6_5Inch
+                }
             case 1024:
                 switch getVersion(code: getVersionCode()) {
                     case .iPadMini,.iPadMini2,.iPadMini3,.iPadMini4:
@@ -204,10 +226,21 @@ public class Device: NSObject {
         return type() == .simulator
     }
     
+    public static func canRotateSplitableNotchDesignPhone() -> Bool {
+        return false
+    }
+    
     public static func isNotchDesignPhone() -> Bool {
         let version: Version = Device.version()
         var returnValue = false
-        if version == .iPhoneX || version == .iPhoneXS || version == .iPhoneXR || version == .iPhoneXSMax {
+        if version == .iPhoneX ||
+            version == .iPhoneXS ||
+            version == .iPhoneXR ||
+            version == .iPhoneXSMax ||
+            version == .iPhone11 ||
+            version == .iPhone11Pro ||
+            version == .iPhone11ProMax
+        {
             returnValue = true
         }
         return returnValue
@@ -216,8 +249,31 @@ public class Device: NSObject {
     public static func isSplitablePhone() -> Bool {
         let version: Version = Device.version()
         var returnValue = false
-        if version == .iPhone6Plus || version == .iPhone6SPlus || version == .iPhone7Plus || version == .iPhone8Plus/* || version == .iPhoneXR || version == .iPhoneXSMax*/ {
-            returnValue = true
+        if canRotateSplitableNotchDesignPhone() {
+            if version == .iPhone6Plus ||
+                version == .iPhone6SPlus ||
+                version == .iPhone7Plus ||
+                version == .iPhone8Plus ||
+                version == .iPhoneXR ||
+                version == .iPhoneXSMax ||
+                version == .iPhone11 ||
+                version == .iPhone11ProMax
+            {
+                returnValue = true
+            }
+        }
+        else {
+            if version == .iPhone6Plus ||
+                version == .iPhone6SPlus ||
+                version == .iPhone7Plus ||
+                version == .iPhone8Plus/* ||
+                 version == .iPhoneXR ||
+                 version == .iPhoneXSMax ||
+                 version == .iPhone11 ||
+                 version == .iPhone11ProMax*/
+            {
+                returnValue = true
+            }
         }
         return returnValue
     }
@@ -225,7 +281,13 @@ public class Device: NSObject {
     public static func isSeSizePhone() -> Bool {
         let deviceVersion: Version = Device.version()
         var returnValue = false
-        if deviceVersion == .iPhoneSE || deviceVersion == .iPhone5S || deviceVersion == .iPhone5C || deviceVersion == .iPhone5 || deviceVersion == .iPhone4S || deviceVersion == .iPhone4 {
+        if deviceVersion == .iPhoneSE ||
+            deviceVersion == .iPhone5S ||
+            deviceVersion == .iPhone5C ||
+            deviceVersion == .iPhone5 ||
+            deviceVersion == .iPhone4S ||
+            deviceVersion == .iPhone4
+        {
             returnValue = true;
         }
         return returnValue

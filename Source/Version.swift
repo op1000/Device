@@ -26,6 +26,9 @@ public enum Version: NSString {
     case iPhoneXS
     case iPhoneXR
     case iPhoneXSMax
+    case iPhone11
+    case iPhone11Pro
+    case iPhone11ProMax
     
     /*** iPad ***/
     case iPad1

@@ -13,6 +13,9 @@ public enum Size: Int, Comparable {
     case screen4Inch
     case screen4_7Inch
     case screen5_5Inch
+    case screen5_8Inch // 11 pro, x, 
+    case screen6_1Inch // 11, xr,
+    case screen6_5Inch // 11 pro max, xs max
     case screen7_9Inch
     case screen9_7Inch
     case screen12_9Inch
